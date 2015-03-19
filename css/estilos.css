@@ -1,13 +1,70 @@
-﻿body {
+﻿*{
+  margin:0;
+  padding: 0;
+}
+@font-face {
+  font-family: 'icomoon';
+  src:url('../fonts/icomoon.eot?4ey6sy');
+  src:url('../fonts/icomoon.eot?#iefix4ey6sy') format('embedded-opentype'),
+  url('../fonts/icomoon.woff?4ey6sy') format('woff'),
+  url('../fonts/icomoon.ttf?4ey6sy') format('truetype'),
+  url('../fonts/icomoon.svg?4ey6sy#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: bolder;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-abajo:before {
+  content: "\f0a3";
+  color: green;
+}
+
+.icon-arriba:before {
+  content: "\f0a2";
+  color: red;
+}
+
+.icon-lapiz:before {
+  content: "\e600";
+}
+
+.icon-pluma:before {
+  content: "\e908";
+  margin-right: 0.8em ;
+}
+
+.icon-extrella:before {
+  content: "\e9d7";
+  color:gold;
+  -webkit-text-fill-color: gold;
+  margin-right: 0.4em ;
+
+}
+
+
+
+body {
   background: #eee;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
 header {
   background: #343B54;
   color: #fff;
-  border: 1px solid red;
   padding: 0.5em;
   position: relative;
   overflow: hidden;
@@ -23,11 +80,27 @@ header h1 {
   margin: 0.2em 70px 0 0;
 }
 
-header #logo img {
+header #logo{
   border-right: 1px solid #fff;
   margin-right: 0.5em;
+}
+
+header #logo img {
   padding-right: 0.5em;
   width: 52px;
+  -webkit-transition: 1s;
+  -moz-transition:  1s;
+  -ms-transition:  1s;
+  -o-transition:  1s;
+  transition: 1s;
+}
+
+header #logo img:hover{
+  transform: rotate(350deg);
+  -webkit-transform: rotate(350deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
 }
 header #avatar{
   margin: 0.5em 0 0.5em 0;
@@ -42,8 +115,9 @@ header #avatar img{
 
 nav{
   background: #80BCA3;
-  padding: 0 0.5em;
+  padding: 0 6em 0 0;
   position: relative;
+  box-shadow: 4px 5px 15px rgba(0,0,0,0.8);
 }
 
 nav ul{
@@ -58,7 +132,17 @@ nav ul li{
 
 nav ul li a{
   color: #fff;
+  padding: 1em;
   text-decoration: none;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s ;
+  -ms-transition: 0.4s ;
+  -o-transition: 0.4s ;
+  transition: 0.4s ;
+}
+
+nav ul li a:hover{
+  background: #343B54;
 }
 
 nav ul #publicar_nav{
@@ -71,14 +155,25 @@ nav ul #publicar_nav a {
   border-radius: 5px;
   box-shadow: 2px 2px 20px rgba(0,0,0,0.6);
   font-style: italic;
-  padding: 0.8em 0.5em;
+  padding: 0.8em 0.8em;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+  margin-top: 10px;
+  -webkit-transition: 0.3s ;
+  -moz-transition: 0.3s ;
+  -ms-transition: 0.3s ;
+  -o-transition: 0.3s ;
+  transition: 0.3s ;
+}
+
+nav ul #publicar_nav a:hover{
+  font-size: 18px;
 }
 
 a {
   color: #22BCE0;
   display: block;
   padding: 0.5em 0;
+  text-decoration: none;
 }
 
 #contenido {
@@ -138,7 +233,7 @@ a {
 #contenido .item .votacion {
   background: white;
   border-radius: 0 0 0.5em 0.5em;
-  left: 5%;
+  left: 3%;
   margin: 5px 0 10px 0;
   padding: 0.2em 0.5em;
   position: absolute;
@@ -154,11 +249,20 @@ a {
   float: right;
 }
 
+#contenido .item .votacion .comentarios_item{
+  background: gray;
+  color: white;
+  width: 15px;
+  height: 10px;
+  text-align: center;
+  padding: 0.5em;
+}
+
 
 footer{
   background: #22BCE0;
   text-align: center;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.7);
   padding: 1em; 
 }
 
@@ -175,4 +279,43 @@ footer p:last-child:before{
 }
 footer p:last-child:after{
     content: "- ";
+}
+
+aside{
+  display: none;
+}
+
+/*@media print{*/
+  /**{*/
+    /*font-family: fantasy;*/
+    /*border: 1px solid red;*/
+    /*font-size: 20px;*/
+  /*}*/
+/*}*/
+@media screen and (min-width: 768px){
+
+  #contenido{
+    overflow: hidden;
+  }
+
+  #contenido .item{
+    width: 46%;
+    float: left;
+  }
+  #contenido .item:nth-child(odd){
+    margin-right: 3% ;
+  }
+}
+
+@media screen and  (min-width: 1000px){
+  aside{
+    display: block;
+    float: right;
+    margin-right: 4em;
+    margin-top: 1em ;
+    width: 20%;
+  }
+  aside vide{
+    width: 100%;
+  }
 }
